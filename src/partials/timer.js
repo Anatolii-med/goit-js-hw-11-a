@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-const startTimerButton = document.querySelector('button[data-start-timer]');
 const inputDate = document.querySelector('#date-selector');
+const startTimerButton = document.querySelector('button[data-start-timer]');
 const timerDays = document.querySelector('span[data-days]');
 const timerHours = document.querySelector('span[data-hours]');
 const timerMinutes = document.querySelector('span[data-minutes]');
@@ -35,7 +35,7 @@ function pad(value) {
 
 const timer = () => {
   const currentDate = Date.parse(new Date());
-  finalDate = Date.parse(inputDate.value);
+  finalDate = Date.parse(inputDate.value) + inputDate.valueAsDate.getTimezoneOffset() * 60 * 1000;
   timerTime = finalDate - currentDate;
   let getTime = convertMs(timerTime);
 
