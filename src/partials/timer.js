@@ -25,18 +25,17 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-let tik = null;
-let finalDate = null;
-let timerTime = null;
-
 function pad(value) {
   return String(value).padStart(2, '0');
 }
 
+let tik = null;
+
 const timer = () => {
   const currentDate = Date.parse(new Date());
-  finalDate = Date.parse(inputDate.value) + inputDate.valueAsDate.getTimezoneOffset() * 60 * 1000;
-  timerTime = finalDate - currentDate;
+  let finalDate =
+    Date.parse(inputDate.value) + inputDate.valueAsDate.getTimezoneOffset() * 60 * 1000;
+  let timerTime = finalDate - currentDate;
   let getTime = convertMs(timerTime);
 
   timerDays.innerHTML = pad(getTime.days);
